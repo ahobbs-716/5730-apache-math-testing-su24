@@ -15,35 +15,56 @@ public class MyPrime {
      * @throws IllegalArgumentException if n &lt; 0.
      */
     public static int nextPrime(int n) {
+
+        //check if negative
         if (n < 0) {
             throw new IllegalArgumentException("Arguments to the function must not be negative.");
         }
+
+        // is known prime (2)
         if (n == 2) {
             return 2;
         }
+
         n |= 1;//make sure n is odd
+
+        // if known prime (1) (LOGIC ERROR)
         if (n == 1) { 
             return 1;
         }
 
+        // is known prime (other)
         if (isPrime(n)) {
             return n;
         }
 
         final int rem = n % 3;
-        if (0 == rem) { 
-            n += 2; 
-        } else if (1 == rem) { 
+
+        //if has 3 as a factor
+        if (0 == rem) {
+
+            //try adding 2
+            n += 2;
+
+            //if has a remainder of 1
+        } else if (1 == rem) {
+
+            //try adding 4
             n += 4; 
         }
-        while (true) { 
+
+        //loop in a pattern of +2...+4...+2...+4 until you hit a prime
+        while (true) {
+
             if (isPrime(n)) {
                 return n;
             }
+
             n += 2; 
             if (isPrime(n)) {
                 return n;
             }
+
             n += 4; 
         }
     }

@@ -39,6 +39,7 @@ public class MyFractions {
             return f1;
         }
         int d1 = ArithmeticUtils.gcd(f1.getDenominator(), f2.getDenominator());
+        //if the greatest common divisor is 1...
         if (d1==1) {
             // result is ( (u*v' +/- u'v) / u'v')
             int uvp = ArithmeticUtils.mulAndCheck(f1.getNumerator(), f2.getDenominator());
